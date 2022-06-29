@@ -34,4 +34,17 @@ app.get('/movies', (req, res) =>
     return res.status(200).json(movies);
 });
 
+//create film
+app.post('/movies', (req, res) => {
+
+    const newFilm = {
+        id: req.body.id,
+        title: req.body.title
+    };
+
+    movies.push(newFilm);
+
+    return res.status(200).send('Create film');
+});
+
 app.listen(port, () => console.log("Server is running on port " + port))
