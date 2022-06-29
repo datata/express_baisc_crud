@@ -36,7 +36,6 @@ app.get('/movies', (req, res) =>
 
 //create film
 app.post('/movies', (req, res) => {
-
     const newFilm = {
         id: req.body.id,
         title: req.body.title
@@ -46,5 +45,14 @@ app.post('/movies', (req, res) => {
 
     return res.status(200).send('Create film');
 });
+
+// get movie by id
+app.get('/movies/:id', (req, res) => {
+    const movie = movies.find((movie) => {
+        return movie.id = req.params.id;
+    });
+
+    return res.status(200).json(movie);
+})
 
 app.listen(port, () => console.log("Server is running on port " + port))
