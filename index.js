@@ -49,7 +49,7 @@ app.post('/movies', (req, res) => {
 // get movie by id
 app.get('/movies/:id', (req, res) => {
     const movie = movies.find((movie) => {
-        return movie.id = req.params.id;
+        return movie.id === req.params.id;
     });
 
     return res.status(200).json(movie);
@@ -71,6 +71,17 @@ app.put('/movies/:id', (req, res) => {
     movies = movieList
     
     return res.status(200).json(movies)
+});
+
+// delete film
+app.delete('/movies/:id', (req, res) => {
+    const movieList = movies.filter((movie) => {
+        return movie.id != req.params.id
+    });
+
+    movies = movieList;
+
+    return res.status(200).send('Movie deleted');
 });
 
 app.listen(port, () => console.log("Server is running on port " + port))
