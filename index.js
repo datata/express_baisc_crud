@@ -55,4 +55,22 @@ app.get('/movies/:id', (req, res) => {
     return res.status(200).json(movie);
 })
 
+// update movie
+app.put('/movies/:id', (req, res) => {
+    const movieList = movies.filter((movie) => {
+        return movie.id != req.params.id
+    });
+
+    const newDataMovie = {
+        id: req.params.id,
+        title: req.body.title
+    };
+
+    movieList.push(newDataMovie);
+
+    movies = movieList
+    
+    return res.status(200).json(movies)
+});
+
 app.listen(port, () => console.log("Server is running on port " + port))
