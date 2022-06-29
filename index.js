@@ -49,7 +49,7 @@ app.post('/movies', (req, res) => {
 // get movie by id
 app.get('/movies/:id', (req, res) => {
     const movie = movies.find((movie) => {
-        return movie.id === req.params.id;
+        return movie.id == req.params.id;
     });
 
     return res.status(200).json(movie);
